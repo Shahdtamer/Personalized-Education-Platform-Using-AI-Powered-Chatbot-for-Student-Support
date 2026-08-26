@@ -107,7 +107,7 @@ uvicorn backend.api.main:app --reload
 
 ```bash
 cd frontend
-streamlit run Home.py
+streamlit run frontend/Home.py
 ```
 
 ## 🗺️ Roadmap
