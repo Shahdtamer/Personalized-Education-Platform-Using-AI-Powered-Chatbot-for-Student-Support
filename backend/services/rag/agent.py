@@ -5,6 +5,10 @@ from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_core.runnables.history import RunnableWithMessageHistory
 import os
 from langchain_google_genai import ChatGoogleGenerativeAI
+from dotenv import load_dotenv
+
+load_dotenv()
+print("GOOGLE_API_KEY loaded:", bool(os.getenv("GOOGLE_API_KEY")))
 #Memory
 store={}
 def get_session_history(session_id):
