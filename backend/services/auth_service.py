@@ -9,26 +9,33 @@ def register(email: str, password: str, full_name: str):
             "password": password
         })
 
+        print(response)
+
         user = response.user
 
         if not user:
             raise HTTPException(
                 status_code=400,
-                detail="User creation failed in Supabase Auth"
+                detail="User creation failed"
             )
 
         user_id = user.id
 
-        supabase.table("profiles").insert({
+        profile_response = supabase.table("profiles").insert({
             "id": user_id,
             "full_name": full_name
         }).execute()
 
-        return {"message": "Registered successfully", "user_id": user_id}
+        print(profile_response)
+
+        return {
+            "message": "Registered successfully",
+            "user_id": user_id
+        }
 
     except Exception as e:
+        print(e)
         raise HTTPException(status_code=500, detail=str(e))
-    return {"message": "Registered successfully", "user_id": user_id}
 
 # Login
 def login(email: str, password: str):

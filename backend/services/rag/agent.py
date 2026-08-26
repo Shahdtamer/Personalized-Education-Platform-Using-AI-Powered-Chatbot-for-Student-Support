@@ -3,6 +3,8 @@ from langchain.agents import AgentExecutor
 from langchain.agents import create_tool_calling_agent
 from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_core.runnables.history import RunnableWithMessageHistory
+import os
+from langchain_google_genai import ChatGoogleGenerativeAI
 #Memory
 store={}
 def get_session_history(session_id):
